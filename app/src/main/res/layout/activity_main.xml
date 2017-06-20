@@ -7,17 +7,25 @@
     tools:context="com.example.riven.alarmdemo.MainActivity">
 
     <Button
+        android:id="@+id/bt_create_alarm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Alarm"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_cancel_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel Alarm"
+        android:textAllCaps="false" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_height="match_parent"/>
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

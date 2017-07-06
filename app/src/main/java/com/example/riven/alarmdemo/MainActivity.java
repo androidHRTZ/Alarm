@@ -1,8 +1,11 @@
 package com.example.riven.alarmdemo;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     protected EditText et_second_three;
 
     private Context mContext;
+    private DBHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mContext = this;
+        mDBHelper = new DBHelper(this, DBHelper.DB_NAME, null, DBHelper.DB_VERSION);
     }
 
     @OnClick(R.id.btn_set_one)
@@ -116,4 +121,26 @@ public class MainActivity extends AppCompatActivity {
         AlarmUtils.deleteAlarm(mContext, ALARM_THREE);
     }
 
+    @OnClick(R.id.bt_add_data)
+    protected void onClickAddData() {
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.TABLE_ID, 001);
+        values.put(DBHelper.TABLE_USER_ID, 11111);
+        values.put(DBHelper.TABLE_TRIGGER_TIME, 56565656);
+        values.put(DBHelper.TABLE_LAST_DATE, 5566999);
+        mDBHelper.insert(values);
+    }
+
+    @OnClick(R.id.bt_search_all)
+    protected void onClickSearchAll() {
+        Cursor cursor = mDBHelper.query();
+        while (cursor.moveToNext()){
+            Log.e("id is ", cursor.getColumnName(0));
+            Log.e("user'id is ", cursor.getColumnName(1));
+            Log.e("trigger time is ", cursor.getColumnName(2));
+            Log.e("last date is ", cursor.getColumnName(3));
+
+        }
+        mDBHelper.closeDB();
+    }
 }

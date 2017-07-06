@@ -261,4 +261,25 @@
             android:text="Del" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bt_add_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Add data"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_search_all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search all data"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/tv_result_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
+
 </LinearLayout>

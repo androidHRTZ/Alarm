@@ -16,12 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".MyReceiver" >
+        <receiver android:name=".MyReceiver">
             <intent-filter>
-                <action android:name="ALARM_CLOCK" />
+                <action android:name="ALARM_CLOCK_ACTION" />
             </intent-filter>
         </receiver>
-        <service android:name=".AlarmClockService"/>
+        <service android:name=".AlarmClockService" />
     </application>
 
 </manifest>

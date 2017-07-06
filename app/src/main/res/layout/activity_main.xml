@@ -6,26 +6,259 @@
     android:orientation="vertical"
     tools:context="com.example.riven.alarmdemo.MainActivity">
 
-    <Button
-        android:id="@+id/bt_create_alarm"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Alarm"
-        android:textAllCaps="false" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/bt_cancel_alarm"
+        <EditText
+            android:id="@+id/et_year_one"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="2017" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年" />
+
+        <EditText
+            android:id="@+id/et_month_one"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月" />
+
+        <EditText
+            android:id="@+id/et_day_one"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日" />
+
+        <EditText
+            android:id="@+id/et_hour_one"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="17" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="时" />
+
+        <EditText
+            android:id="@+id/et_minute_one"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分" />
+
+        <EditText
+            android:id="@+id/et_second_one"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒" />
+
+        <Button
+            android:id="@+id/btn_set_one"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Set" />
+
+        <Button
+            android:id="@+id/btn_del_one"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Del" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel Alarm"
-        android:textAllCaps="false" />
+        android:orientation="horizontal">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        <EditText
+            android:id="@+id/et_year_two"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="2017" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年" />
+
+        <EditText
+            android:id="@+id/et_month_two"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月" />
+
+        <EditText
+            android:id="@+id/et_day_two"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日" />
+
+        <EditText
+            android:id="@+id/et_hour_two"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="17" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="时" />
+
+        <EditText
+            android:id="@+id/et_minute_two"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分" />
+
+        <EditText
+            android:id="@+id/et_second_two"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒" />
+
+        <Button
+            android:id="@+id/btn_set_two"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Set" />
+
+        <Button
+            android:id="@+id/btn_del_two"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Del" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="5dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_year_three"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="2017" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="年" />
+
+        <EditText
+            android:id="@+id/et_month_three"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="月" />
+
+        <EditText
+            android:id="@+id/et_day_three"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日" />
+
+        <EditText
+            android:id="@+id/et_hour_three"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="17" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="时" />
+
+        <EditText
+            android:id="@+id/et_minute_three"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分" />
+
+        <EditText
+            android:id="@+id/et_second_three"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="19" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="秒" />
+
+        <Button
+            android:id="@+id/btn_set_three"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Set" />
+
+        <Button
+            android:id="@+id/btn_del_three"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="Del" />
+    </LinearLayout>
 
 </LinearLayout>

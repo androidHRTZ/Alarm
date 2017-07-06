@@ -1,64 +1,119 @@
 package com.example.riven.alarmdemo;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.widget.EditText;
 
-import java.sql.Time;
-import java.util.Calendar;
-
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int ALARM_ONE = 00000;
+    public static final int ALARM_TWO = 00001;
+    public static final int ALARM_THREE = 00002;
+
+    @BindView(R.id.et_year_one)
+    protected EditText et_year_one;
+    @BindView(R.id.et_month_one)
+    protected EditText et_month_one;
+    @BindView(R.id.et_day_one)
+    protected EditText et_day_one;
+    @BindView(R.id.et_hour_one)
+    protected EditText et_hour_one;
+    @BindView(R.id.et_minute_one)
+    protected EditText et_minute_one;
+    @BindView(R.id.et_second_one)
+    protected EditText et_second_one;
+    @BindView(R.id.et_year_two)
+    protected EditText et_year_two;
+    @BindView(R.id.et_month_two)
+    protected EditText et_month_two;
+    @BindView(R.id.et_day_two)
+    protected EditText et_day_two;
+    @BindView(R.id.et_hour_two)
+    protected EditText et_hour_two;
+    @BindView(R.id.et_minute_two)
+    protected EditText et_minute_two;
+    @BindView(R.id.et_second_two)
+    protected EditText et_second_two;
+    @BindView(R.id.et_year_three)
+    protected EditText et_year_three;
+    @BindView(R.id.et_month_three)
+    protected EditText et_month_three;
+    @BindView(R.id.et_day_three)
+    protected EditText et_day_three;
+    @BindView(R.id.et_hour_three)
+    protected EditText et_hour_three;
+    @BindView(R.id.et_minute_three)
+    protected EditText et_minute_three;
+    @BindView(R.id.et_second_three)
+    protected EditText et_second_three;
+
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mContext = this;
     }
 
-    @OnClick(R.id.bt_create_alarm)
-    protected void onClickCreateAlarm() {
-        setAlarm();
+    @OnClick(R.id.btn_set_one)
+    protected void onClickSetOne() {
+        AlarmUtils.setAlarm(
+                mContext,
+                ALARM_ONE,
+                Integer.valueOf(et_year_one.getText().toString().trim()),
+                Integer.valueOf(et_month_one.getText().toString().trim()),
+                Integer.valueOf(et_day_one.getText().toString().trim()),
+                Integer.valueOf(et_hour_one.getText().toString().trim()),
+                Integer.valueOf(et_minute_one.getText().toString().trim()),
+                Integer.valueOf(et_second_one.getText().toString().trim()));
     }
 
-    @OnClick(R.id.bt_cancel_alarm)
-    protected void onClickCancelAlarm() {
-        deleteAlarm();
+    @OnClick(R.id.btn_del_one)
+    protected void onClickDelOne() {
+        AlarmUtils.deleteAlarm(mContext, ALARM_ONE);
     }
 
-    private void setAlarm() {
-        Calendar c = Calendar.getInstance();
-//		c.set(2017, 6, 12, 15, 31, 10);  這個好坑，可能不行的
-        c.set(Calendar.YEAR,2017);
-        c.set(Calendar.MONTH,Calendar.JUNE);//也可以填数字，0-11,一月为0
-        c.set(Calendar.DAY_OF_MONTH, 20);
-        c.set(Calendar.HOUR_OF_DAY, 14);
-        c.set(Calendar.MINUTE, 46);
-        c.set(Calendar.SECOND, 1);
-
-        if (c.getTimeInMillis() < System.currentTimeMillis()) {
-            Toast.makeText(MainActivity.this, "设置时间必须大于当前时间", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Intent intent = new Intent("ALARM_CLOCK");
-        intent.putExtra("msg", "hello");
-        PendingIntent p = PendingIntent.getBroadcast(this, 500000005, intent, 000);
-        AlarmManager a = (AlarmManager) getSystemService(ALARM_SERVICE);
-        a.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);
+    @OnClick(R.id.btn_set_two)
+    protected void onClickSetTwo() {
+        AlarmUtils.setAlarm(
+                mContext,
+                ALARM_TWO,
+                Integer.valueOf(et_year_two.getText().toString().trim()),
+                Integer.valueOf(et_month_two.getText().toString().trim()),
+                Integer.valueOf(et_day_two.getText().toString().trim()),
+                Integer.valueOf(et_hour_two.getText().toString().trim()),
+                Integer.valueOf(et_minute_two.getText().toString().trim()),
+                Integer.valueOf(et_second_two.getText().toString().trim()));
     }
 
-    private void deleteAlarm() {
-        Intent i = new Intent("ALARM_CLOCK");
-        PendingIntent p = PendingIntent.getBroadcast(this, 500000005, i, 000);
-        AlarmManager a = (AlarmManager) getSystemService(ALARM_SERVICE);
-        a.cancel(p);
+    @OnClick(R.id.btn_del_two)
+    protected void onClickDelTwo() {
+        AlarmUtils.deleteAlarm(mContext, ALARM_TWO);
+    }
+
+    @OnClick(R.id.btn_set_three)
+    protected void onClickSetThree() {
+        AlarmUtils.setAlarm(
+                mContext,
+                ALARM_THREE,
+                Integer.valueOf(et_year_three.getText().toString().trim()),
+                Integer.valueOf(et_month_three.getText().toString().trim()),
+                Integer.valueOf(et_day_three.getText().toString().trim()),
+                Integer.valueOf(et_hour_three.getText().toString().trim()),
+                Integer.valueOf(et_minute_three.getText().toString().trim()),
+                Integer.valueOf(et_second_three.getText().toString().trim()));
+    }
+
+    @OnClick(R.id.btn_del_three)
+    protected void onClickDelThree() {
+        AlarmUtils.deleteAlarm(mContext, ALARM_THREE);
     }
 
 }

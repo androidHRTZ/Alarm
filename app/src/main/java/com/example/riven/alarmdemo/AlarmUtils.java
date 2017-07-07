@@ -22,7 +22,7 @@ public class AlarmUtils {
     public static final String ALARM_CLOCK_ACTION = "ALARM_CLOCK_ACTION";   //修改的时候注意Manifest也要对应修改
     public static final int ALARM_CLOCK_FLAG = 000;
 
-    public static void setAlarm(Context context ,int requestCode, int year, int month, int day, int hour, int minute, int second) {
+    public static void setAlarm(Context context, int requestCode, int year, int month, int day, int hour, int minute, int second) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month - 1);//也可以填数字，0-11,一月为0
@@ -42,12 +42,19 @@ public class AlarmUtils {
         PendingIntent p = PendingIntent.getBroadcast(context, requestCode, intent, ALARM_CLOCK_FLAG);
         AlarmManager a = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         // 华为荣耀8青春版、华为 PE-TL10、华为CAM-UL00小米Note 4X is ok； 小米3（闹钟不太准时）（小米论坛说无法解决wowowo，小米系统缘由）
-        // !!!!!!  API>19后，没有重复设置闹铃的功能，只能每次在广播接收器
-        // 因为安卓API19后的系统优化机制可能会导致闹铃不准时，以此解决
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            a.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);    //设置单次
+        /*
+        *  19<API，set()方法设置一次性闹铃没问题，setRepeating()方法设置重复闹铃没问题
+        *  19<API<23, setExact()或setWindow代替set()
+        *  19<API, setRepeating()被抛弃，没有设置重复闹铃的方法
+        *  23<API, setWindow()和setExact()因为安卓系统低电耗模式限制，应用进入后台后闹铃可能不会触发，用setAndAllowWhileIdle()和setExactAndAllowWhileIdle()代替
+         */
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            a.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            a.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);
         } else {
-            a.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);   //设置单次
+            a.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), p);
         }
         Toast.makeText(context, "闹铃设置成功", Toast.LENGTH_SHORT).show();
     }
